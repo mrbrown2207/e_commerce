@@ -39,7 +39,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', 'ecommerce-mrb.herokuapp.com']
 
 
 # Application definition
@@ -100,17 +100,20 @@ WSGI_APPLICATION = 'e_commerce.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
-"""
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+
+if "DATABASE_URL" in os.environ:
+    print("Postgres URL found")
+    DATABASES = {
+        "default": dj_database_url.parse(os.getenv("DATABASE_URL"))
     }
-}
-"""
-
-
-DATABASES = {'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))}
+else:
+    print("Postgres URL not found, using sqlite3 instead")
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
+        }
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
