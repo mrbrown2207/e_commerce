@@ -1,3 +1,4 @@
+
 {% load staticfiles %}
 <!DOCTYPE html>
 <html lang="en">
@@ -38,9 +39,9 @@
                     {% endif %}
                     <li>
                         <a href="{% url 'view_cart' %}">
-                            <i class="fa fa-shipping-cart"></i> Cart 
+                            <i class="fa fa-shipping-cart"></i>Cart
                             {% if product_count > 0 %}
-                            <label for="" class="badge badge-warning">{{ product_count }}</label>
+                            <label class="badge badge-warning">{{ product_count }}</label>
                             {% endif %}
                         </a>
                     </li>
@@ -60,9 +61,8 @@
     <div class="container">
         <div class="display">
             <form action="{% url 'search' %}" method="GET">
-                <!--See do_search view/method for q reference-->
                 <input type="text" name="q">
-                <button type="submit">search</button>
+                <button type="search">Search</button>
             </form>
         </div>
         {% block content %} {% endblock %}
