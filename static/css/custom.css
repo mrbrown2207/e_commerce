@@ -1,6 +1,6 @@
 body {
     font-family: Arial;
-    padding-top: 50px;
+    padding-top: 80px; /* Ensures the search box is visible */
 }
 
 footer {
@@ -17,4 +17,57 @@ footer {
 
 .accountform {
     padding-top: 20px;
+}
+
+.badge {
+    padding: 0 9px;
+    -webkit-border-radius: 9px; /* curvature */
+    -moz-border-radius: 9px;
+    border-radius: 9px;
+}
+
+.label-warning[href],
+.badge-warning[href] {
+    background-color: #c67605;
+}
+
+.product {
+    background-size: contain;
+    background-position: center center;
+    background-repeat: no-repeat;
+    width: 150px;
+    height: 150px;
+    margin: 0 auto; /* centre within other divs */ 
+}
+
+caption p {
+    word-wrap: break-word;
+}
+
+.row.row-flex {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 30px;
+}
+
+.panel-default {
+    border-color: transparent;
+    padding: 0 10px;
+}
+
+/* 
+The is the outermost border so that ou can see the  
+delineation between one product panel and the next
+*/
+.panel-body {
+    height: 100%;
+    border: 1px solid #ddd;
+}
+
+/*
+This is to ensure that the description div will be  
+uniform in length despite how short the text is.
+*/
+.product-description {
+    min-height: 40px;
 }

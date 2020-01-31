@@ -12,23 +12,27 @@ def view_cart(request):
     return render(request, "cart.html")
 
 
-def add_to_cart(request):
+def add_to_cart(request, id):
     """Add a quantity of the specified product to the cart"""
-    quantity = int(request.POST.get("quantity"))
+    quantity = int(request.POST.get('quantity'))
 
     """
     This is getting from the session. It will either get a
     cart or return an empty dictionary
     """
     cart = request.session.get('cart', {})
-    cart[id] = cart.get(id, quantity)
+    if id in cart:
+        cart[id] = cart.get(cart[id], quantity)
+    else:
+        cart[id] = cart.get(id, quantity)
 
     request.session['cart'] = cart
     return redirect(reverse('index'))
 
 
-def adjust_cart(request):
+def adjust_cart(request, id):
     """Adjust the quantity of specified product by specified amount"""
+    print(request.POST)
     quantity = int(request.POST.get('quantity'))
     cart = request.session.get('cart', {})
 
